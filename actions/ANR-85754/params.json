@@ -1,6 +1,6 @@
 {
     "category": "plugins",
-    "display": "End repeated table on PDF",
+    "display": "PDF Conjurer (backend) | End repeated table on PDF",
     "fields": {
         "AND": {
             "caption": "Insert the previous PDF Conjurer Server-side step result",

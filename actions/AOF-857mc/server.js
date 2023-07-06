@@ -16,6 +16,7 @@ function(properties, context) {
         into_header,
         into_footer,
         into_background,
+        fixed_width_column_size,
     } = properties;
 
 	const configs = JSON.parse(prev_configs);
@@ -34,8 +35,29 @@ function(properties, context) {
     if (page_break !== 'Unspecified') options.pageBreak = page_break.toLowerCase();
     if (table_custom_margins) options.margin = [left_margin, top_margin, right_margin, bottom_margin];
     
+
+    
     if (into_multi_column || into_header || into_footer) {
-        options.width = this_column_width === 'Fit available space' ? '*' : 'auto';
+        
+       // options.width = this_column_width === 'Fit available space' ? '*' : 'auto';
+        
+        
+        if (this_column_width === 'Fit available space') {
+
+			options.width = "*";
+
+		} else if (this_column_width === "Fit content") {
+
+			options.width = "auto";
+
+		} else if (this_column_width === "Fixed width") {
+
+			options.width = fixed_width_column_size;
+
+		}
+        
+        
+        
     }
     
     const { [table_name]: tableConfigs } = configs.advancedTables;

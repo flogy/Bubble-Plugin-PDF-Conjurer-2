@@ -173,10 +173,18 @@ function(instance, properties, context) {
 
 	if (properties.into_multi_column === true) {
 
-		if (properties.this_column_width === "Fit available space") {
-			tableObjectHolder.width = "*";
-		} else {
-			tableObjectHolder.width = "auto";
+	if (properties.this_column_width === "Fit available space") {
+
+			textObjectHolder.width = "*";
+
+		} else if (properties.this_column_width === "Fit content") {
+
+			textObjectHolder.width = "auto";
+
+		} else if (properties.this_column_width === "Fixed width") {
+
+			textObjectHolder.width = properties.fixed_width_column_size;
+
 		}
 
 		// pushing into the multi column
